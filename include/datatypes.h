@@ -10,9 +10,7 @@ enum connection_type {
 };
 
 static QMap<QString, connection_type> to_connection_type = {
-    {"tcp", connection_type::TCP},
-    {"ws", connection_type::WEBSOCKETS}
-};
+    {"tcp", connection_type::TCP}, {"ws", connection_type::WEBSOCKETS}};
 
 struct server_type {
   QString name;
@@ -78,39 +76,6 @@ struct pos_size_type {
   int y = 0;
   int width = 0;
   int height = 0;
-};
-
-enum CHAT_MESSAGE {
-  DESK_MOD = 0,
-  PRE_EMOTE,
-  CHAR_NAME,
-  EMOTE,
-  MESSAGE,
-  SIDE,
-  SFX_NAME,
-  EMOTE_MOD,
-  CHAR_ID,
-  SFX_DELAY,
-  OBJECTION_MOD,
-  EVIDENCE_ID,
-  FLIP,
-  REALIZATION,
-  TEXT_COLOR,
-  SHOWNAME,
-  OTHER_CHARID,
-  OTHER_NAME,
-  OTHER_EMOTE,
-  SELF_OFFSET,
-  OTHER_OFFSET,
-  OTHER_FLIP,
-  IMMEDIATE,
-  LOOPING_SFX,
-  SCREENSHAKE,
-  FRAME_SCREENSHAKE,
-  FRAME_REALIZATION,
-  FRAME_SFX,
-  ADDITIVE,
-  EFFECTS
 };
 
 enum EMOTE_MOD {

@@ -10,8 +10,8 @@ public:
   AOPacket(QString p_packet_string);
   AOPacket(QString header, QStringList &p_contents) : m_header(header), m_contents(p_contents){}
 
-  QString get_header() { return m_header; }
-  QStringList &get_contents() { return m_contents; }
+  QString get_header() const { return m_header; }
+  const QStringList &get_contents() const { return m_contents; }
   QString to_string(bool encoded = false);
 
   void net_encode();

@@ -5,6 +5,7 @@
 #include "hardware_functions.h"
 #include "lobby.h"
 #include "networkmanager.h"
+#include "icmessage.h"
 
 void AOApplication::append_to_demofile(QString packet_string)
 {
@@ -306,9 +307,10 @@ void AOApplication::server_packet_received(AOPacket *p_packet)
     }
   }
   else if (header == "MS") {
-    if (courtroom_constructed && courtroom_loaded)
-    {
-      w_courtroom->chatmessage_enqueue(p_packet->get_contents());
+    if (courtroom_constructed && courtroom_loaded) {
+      if (auto l_incomingMsg = ICMessage::from(*p_packet)) {
+        w_courtroom->chatmessage_enqueue(l_incomingMsg.value());
+      }
       append_to_demofile(f_packet_encoded);
     }
   }

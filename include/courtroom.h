@@ -228,8 +228,13 @@ public:
   void append_server_chatmessage(QString p_name, QString p_message,
                                  QString p_color);
 
-  // Add the message packet to the stack
-  void chatmessage_enqueue(QStringList p_contents);
+  /**
+   * @brief Adds an IC message to the stack.
+   *
+   * @param f_message The IC message to add to the stack. See the class
+   * documentation for more details.
+   */
+  void chatmessage_enqueue(const ICMessage &f_message);
 
   // Parse the chat message packet and unpack it into the m_chatmessage[ITEM] format
   void unpack_chatmessage(QStringList p_contents);
@@ -482,11 +487,6 @@ private:
 
   // amount by which we multiply the delay when we parse punctuation chars
   const int punctuation_modifier = 3;
-
-  // Minumum and maximum number of parameters in the MS packet
-  static const int MS_MINIMUM = 15;
-  static const int MS_MAXIMUM = 30;
-  QString m_chatmessage[MS_MAXIMUM];
 
   /**
    * @brief The amount of time to wait at the start and end of transition animations
